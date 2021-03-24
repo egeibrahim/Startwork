@@ -5,9 +5,7 @@ const customErrorHandler = require("./middlewares/errors/customErrorHandler");
 const path = require("path");
 const cors = require("cors");
 
-dotenv.config({
-  path: "./config/env/config.env",
-});
+dotenv.config();
 
 const PORT = process.env.PORT || 5000;
 //Mongodb connection
