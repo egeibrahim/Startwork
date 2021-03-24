@@ -1,5 +1,5 @@
 const asyncErrorWrapper = require("express-async-handler");
-const User = require("../models/User");
+const User = require("../models/userModel");
 
 const searchTag = asyncErrorWrapper(async (req, res) => {
   let { key } = req.params;

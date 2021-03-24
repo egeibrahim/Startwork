@@ -1,5 +1,5 @@
 const mongoose = require("mongoose");
-const User = require("./User");
+const User = require("./userModel");
 const CustomError = require("../helpers/error/CustomError");
 
 const Schema = mongoose.Schema;

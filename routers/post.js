@@ -6,7 +6,7 @@ const {
   getSinglePost,
   getAllPosts,
   getAllUserPosts,
-} = require("../controllers/post");
+} = require("../controllers/postController");
 
 const router = express.Router();
 

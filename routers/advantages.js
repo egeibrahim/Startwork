@@ -3,7 +3,7 @@ const {
   createAdvantage,
   getAllAdvantage,
   getSingleAdvantage,
-} = require("../controllers/advantages");
+} = require("../controllers/advantagesController");
 const { getAccessToRoute } = require("../middlewares/authorization/auth");
 const uploadImage = require("../middlewares/libraries/uploadImage");
 const router = express.Router();

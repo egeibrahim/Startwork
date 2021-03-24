@@ -1,5 +1,5 @@
 const asyncErrorWrapper = require("express-async-handler");
-const Apply = require("../models/Apply");
+const Apply = require("../models/applyModel");
 
 const createApply = asyncErrorWrapper(async (req, res) => {
   const information = req.body;

@@ -1,11 +1,11 @@
 const asyncErrorWrapper = require("express-async-handler");
-const Conversation = require("../models/Conversation");
-const Discussion = require("../models/Discussion");
-const User = require("../models/User");
+const ConversationController = require("../models/conversationModel");
+const Discussion = require("../models/discussionModel");
+const User = require("../models/userModel");
 
 const createConversation = asyncErrorWrapper(async (req, res) => {
   const information = req.body;
-  const conversation = await Conversation.create({
+  const conversation = await ConversationController.create({
     userId: req.user.id,
     ...information,
   });
@@ -17,7 +17,7 @@ const createConversation = asyncErrorWrapper(async (req, res) => {
 });
 
 const getAllConversation = asyncErrorWrapper(async (req, res) => {
-  const conversation = await Conversation.find()
+  const conversation = await ConversationController.find()
     .populate({
       path: "userId",
       select: ["profile_image", "name", "username"],
@@ -32,7 +32,7 @@ const getAllConversation = asyncErrorWrapper(async (req, res) => {
 
 const getSingleConversation = asyncErrorWrapper(async (req, res) => {
   const { id } = req.params;
-  const conversation = await Conversation.findById(id).populate({
+  const conversation = await ConversationController.findById(id).populate({
     path: "comments",
     select: "comment",
     populate: {

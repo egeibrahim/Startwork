@@ -1,9 +1,9 @@
 const asyncErrorWrapper = require("express-async-handler");
-const Event = require("../models/Event");
+const EventController = require("../models/eventModel");
 
 const createEvent = asyncErrorWrapper(async (req, res) => {
   const information = req.body;
-  const event = await Event.create({
+  const event = await EventController.create({
     userId: req.user.id,
     profile_image: req.savedProfileImage,
     ...information,
@@ -16,7 +16,7 @@ const createEvent = asyncErrorWrapper(async (req, res) => {
 });
 
 const getAllEvents = asyncErrorWrapper(async (req, res) => {
-  const event = await Event.find();
+  const event = await EventController.find();
   return res.status(200).json({
     success: true,
     data: event,
@@ -25,7 +25,7 @@ const getAllEvents = asyncErrorWrapper(async (req, res) => {
 
 const getSingleEvent = asyncErrorWrapper(async (req, res) => {
   const { id } = req.params;
-  const event = await Event.findById(id);
+  const event = await EventController.findById(id);
 
   return res.status(200).json({
     success: true,

@@ -1,9 +1,9 @@
-const Investment = require("../models/InvestmentSettings");
+const InvestmentController = require("../models/investmentSettingsModel");
 const asyncErrorWrapper = require("express-async-handler");
 
 const updateInvestmentSettings = asyncErrorWrapper(async (req, res) => {
   const information = req.body;
-  const investment = await Investment.findOneAndUpdate(
+  const investment = await InvestmentController.findOneAndUpdate(
     { userId: req.user.id },
     information,
     {
@@ -21,7 +21,7 @@ const updateInvestmentSettings = asyncErrorWrapper(async (req, res) => {
 const getInvestmentSettings = asyncErrorWrapper(async (req, res) => {
   const { id } = req.user;
 
-  const investment = await Investment.find({ userId: id });
+  const investment = await InvestmentController.find({ userId: id });
 
   return res.status(200).json({
     success: true,

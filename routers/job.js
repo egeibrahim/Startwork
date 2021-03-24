@@ -1,5 +1,5 @@
 const express = require("express");
-const { createJob, getAllJobs } = require("../controllers/job");
+const { createJob, getAllJobs } = require("../controllers/jobController");
 const { getAccessToRoute } = require("../middlewares/authorization/auth");
 const uploadImage = require("../middlewares/libraries/uploadImage");
 

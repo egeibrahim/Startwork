@@ -1,5 +1,5 @@
 const mongoose = require("mongoose");
-const Conversation = require("./Conversation");
+const Conversation = require("./conversationModel");
 
 const Schema = mongoose.Schema;
 

@@ -2,7 +2,7 @@ const express = require("express");
 const {
   updateMentorSettings,
   getMentorSettings,
-} = require("../controllers/mentor");
+} = require("../controllers/mentorController");
 const { getAccessToRoute } = require("../middlewares/authorization/auth");
 
 const router = express.Router();

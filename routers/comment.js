@@ -4,7 +4,7 @@ const {
   editComment,
   deleteComment,
   getComment,
-} = require("../controllers/comment");
+} = require("../controllers/commentController");
 const { getAccessToRoute } = require("../middlewares/authorization/auth");
 
 const router = express.Router();

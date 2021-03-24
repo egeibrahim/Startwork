@@ -1,9 +1,10 @@
 const mongoose = require("mongoose");
-const Post = require("../models/Post");
+const User = require("./userModel");
+const CustomError = require("../helpers/error/CustomError");
 
 const Schema = mongoose.Schema;
 
-const CommentSchema = Schema({
+const PostSchema = Schema({
   userId: {
     type: mongoose.Schema.ObjectId,
     required: true,
@@ -14,6 +15,12 @@ const CommentSchema = Schema({
     default: Date.now,
     required: true,
   },
+  content: {
+    type: String,
+  },
+  media: {
+    type: String,
+  },
   likes: [
     {
       type: mongoose.Schema.ObjectId,
@@ -21,22 +28,20 @@ const CommentSchema = Schema({
       ref: "User",
     },
   ],
-  post: {
-    type: mongoose.Schema.ObjectId,
-    required: true,
-    ref: "Post",
-  },
-  comment: {
-    type: String,
-    required: true,
-  },
+  comments: [
+    {
+      type: mongoose.Schema.ObjectId,
+      required: true,
+      ref: "Comment",
+    },
+  ],
 });
 
-CommentSchema.post("save", function (next) {
-  Post.findByIdAndUpdate(
-    this.post,
+PostSchema.post("save", function (next) {
+  User.findByIdAndUpdate(
+    this.userId,
     {
-      $push: { comments: this._id },
+      $push: { posts: this._id },
     },
     (err) => {
       if (err) {
@@ -46,4 +51,4 @@ CommentSchema.post("save", function (next) {
   );
 });
 
-module.exports = mongoose.model("Comment", CommentSchema);
+module.exports = mongoose.model("Post", PostSchema);

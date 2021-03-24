@@ -1,10 +1,10 @@
 const asyncErrorWrapper = require("express-async-handler");
-const Post = require("../models/Post");
-const User = require("../models/User");
+const PostController = require("../models/postModel");
+const User = require("../models/userModel");
 
 const createPost = asyncErrorWrapper(async (req, res) => {
   const information = req.body;
-  const post = await Post.create({
+  const post = await PostController.create({
     userId: req.user.id,
     ...information,
   });
@@ -17,7 +17,7 @@ const createPost = asyncErrorWrapper(async (req, res) => {
 
 const getSinglePost = asyncErrorWrapper(async (req, res) => {
   const { id } = req.params;
-  const post = await Post.findById(id);
+  const post = await PostController.findById(id);
 
   return res.status(200).json({
     success: true,
@@ -30,7 +30,7 @@ const getAllPosts = asyncErrorWrapper(async (req, res) => {
   const following = await User.findById(userId).select("following");
   const followList = following.following;
   followList.push(userId);
-  const posts = await Post.find({ userId: followList })
+  const posts = await PostController.find({ userId: followList })
     .populate({
       path: "userId",
       select: ["profile_image", "name", "username"],
@@ -48,7 +48,7 @@ const getAllPosts = asyncErrorWrapper(async (req, res) => {
 
 const getAllUserPosts = asyncErrorWrapper(async (req, res) => {
   const { userId } = req.params;
-  const posts = await Post.find({ userId: userId });
+  const posts = await PostController.find({ userId: userId });
 
   return res.status(200).json({
     success: true,

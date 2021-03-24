@@ -1,11 +1,11 @@
 const asyncErrorWrapper = require("express-async-handler");
-const Comment = require("../models/Comment");
+const CommentController = require("../models/commentModel");
 const CustomError = require("../helpers/error/CustomError");
 
 const createComment = asyncErrorWrapper(async (req, res) => {
   const { postId } = req.params;
   const information = req.body;
-  const comment = await Comment.create({
+  const comment = await CommentController.create({
     userId: req.user.id,
     post: postId,
     ...information,
@@ -19,7 +19,7 @@ const createComment = asyncErrorWrapper(async (req, res) => {
 
 const getComment = asyncErrorWrapper(async (req, res) => {
   const { postId } = req.params;
-  const comment = await Comment.findById(postId);
+  const comment = await CommentController.findById(postId);
 
   return res.status(200).json({
     success: true,
@@ -31,7 +31,7 @@ const editComment = asyncErrorWrapper(async (req, res) => {
   const { id } = req.params;
   const information = req.body;
 
-  const comment = await Comment.findByIdAndUpdate(id, information, {
+  const comment = await CommentController.findByIdAndUpdate(id, information, {
     new: true,
     runValidators: true,
   });
@@ -44,7 +44,7 @@ const editComment = asyncErrorWrapper(async (req, res) => {
 
 const deleteComment = asyncErrorWrapper(async (req, res, next) => {
   const { id } = req.params;
-  const comment = await Comment.findByIdAndDelete(id);
+  const comment = await CommentController.findByIdAndDelete(id);
   if (comment) {
     return res.status(200).json({
       success: true,

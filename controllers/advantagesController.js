@@ -1,5 +1,5 @@
 const asyncErrorWrapper = require("express-async-handler");
-const Advantage = require("../models/Advantage");
+const Advantage = require("../models/advantageModel");
 
 const createAdvantage = asyncErrorWrapper(async (req, res) => {
   const information = req.body;

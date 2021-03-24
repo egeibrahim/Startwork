@@ -5,7 +5,7 @@ const {
   getAllConversation,
   getSingleConversation,
   createDiscussion,
-} = require("../controllers/conversation");
+} = require("../controllers/conversationController");
 
 const router = express.Router();
 

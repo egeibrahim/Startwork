@@ -12,7 +12,7 @@ const {
   getUserById,
   removeFromNetwork,
   getFollowingList,
-} = require("../controllers/auth");
+} = require("../controllers/authController");
 const { getAccessToRoute } = require("../middlewares/authorization/auth");
 const uploadImage = require("../middlewares/libraries/uploadImage");
 

@@ -3,7 +3,7 @@ const { getAccessToRoute } = require("../middlewares/authorization/auth");
 const {
   updateInvestmentSettings,
   getInvestmentSettings,
-} = require("../controllers/investment");
+} = require("../controllers/investmentController");
 
 const router = express.Router();
 

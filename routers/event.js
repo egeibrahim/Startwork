@@ -3,7 +3,7 @@ const {
   createEvent,
   getAllEvents,
   getSingleEvent,
-} = require("../controllers/event");
+} = require("../controllers/eventController");
 const { getAccessToRoute } = require("../middlewares/authorization/auth");
 const uploadImage = require("../middlewares/libraries/uploadImage");
 const router = express.Router();

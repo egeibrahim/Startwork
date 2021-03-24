@@ -1,5 +1,5 @@
-const User = require("../models/User");
-const Mentor = require("../models/MentorSettings");
+const User = require("../models/userModel");
+const Mentor = require("../models/mentorSettingsModel");
 const CustomError = require("../helpers/error/CustomError");
 const asyncErrorWrapper = require("express-async-handler");
 const { sendJwtToClient } = require("../helpers/authorization/tokenHelpers");

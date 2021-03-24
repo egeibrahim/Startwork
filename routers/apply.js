@@ -3,7 +3,7 @@ const {
   createApply,
   getAllApply,
   getSingleApply,
-} = require("../controllers/apply");
+} = require("../controllers/applyController");
 const { getAccessToRoute } = require("../middlewares/authorization/auth");
 const uploadImage = require("../middlewares/libraries/uploadImage");
 const router = express.Router();

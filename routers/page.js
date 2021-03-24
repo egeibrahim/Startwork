@@ -8,7 +8,7 @@ const {
   editPage,
   getOwnPage,
   getPageByType,
-} = require("../controllers/page");
+} = require("../controllers/pageController");
 
 const router = express.Router();
 
