@@ -9,7 +9,7 @@ dotenv.config({
   path: "./config/env/config.env",
 });
 
-const PORT = process.env.PORT;
+const PORT = process.env.PORT || 5000;
 //Mongodb connection
 connectDatabase();
 
